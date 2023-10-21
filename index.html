@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bin2Dec</title>
+</head>
+<script>
+    
+    function validateBinaryInput(inputElement) {
+      const binaryPattern = /^[01]*$/;
+      const inputValue = inputElement.value;
+    
+      if (!binaryPattern.test(inputValue)) {
+        document.getElementById("validationMessage").textContent = "Please enter up to 8 binary digits (0s and 1s).";
+        inputElement.value = inputValue.replace(/[^01]/g, ''); // Remove non-binary characters
+      } else if (inputValue.length > 8) {
+        document.getElementById("validationMessage").textContent = "Input limited to 8 characters.";
+        inputElement.value = inputValue.substring(0, 8); // Limit input to 8 characters
+      } else {
+        document.getElementById("validationMessage").textContent = "";
+      }
+    }
+
+    function myGeeks() { 
+            document.querySelector(".button").onclick = function() { 
+                const ans = document.getElementById("output");
+                const numToConvert = document.getElementById("binaryInput").value;
+                ans.textContent = "The given number in decimal is "+parseInt(numToConvert,2);
+            } 
+        }
+
+</script>
+    
+    
+<body>
+        <p id="text">Enetr a binary number</p>
+        <input type="text" id="binaryInput" oninput="validateBinaryInput(this)">
+        <p id="validationMessage" style="color: red;"></p>
+        <input type="button" class="button"
+        value="Convert to Decimal" 
+        onclick="myGeeks()" > 
+        
+        <p id="output"></p>
+
+</body>
+</html>
